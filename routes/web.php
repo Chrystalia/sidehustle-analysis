@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VisualizationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return redirect('/side-hustle');
 });
+Route::get('/side-hustle', [VisualizationController::class, 'index']);
+Route::post('/side-hustle/category', [VisualizationController::class, 'show']);

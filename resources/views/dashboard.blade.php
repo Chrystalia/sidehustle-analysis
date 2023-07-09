@@ -24,73 +24,100 @@
     }
 </style>
 
-<body>
-    <div class="bg-[#F4F4F4]">
-        <div class="text-center font-bold text-2xl p-4 bg-cBlue m-2 text-white rounded-xl drop-shadow-xl">Side Hustle
-            Analysis
-            Dashboard
-            <br> 2018-2023
-        </div>
-        <div
-            class="m-2 p-2 rounded-md bg-white flex flex-row justify-between drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue">
-            {{-- <h1>Search Side Hustle</h1>
-            <span class="material-symbols-outlined">
-                search
-            </span> --}}
-            <select id="myDropdown" class="w-full bg-transparent border-transparent">
-                <option value="option1">Select Side Hustle</option>
-                <option value="option2">Freelancing</option>
-                <option value="option3">Blogging</option>
-                <option value="option3">Youtube Channel</option>
-                <option value="option3">Podcast</option>
-                <option value="option3">Dog Walking</option>
+<body  class="bg-[#F4F4F4] h-screen">
+    <div class="text-center font-bold text-2xl p-4 bg-cBlue m-2 text-white rounded-xl drop-shadow-xl">
+        Side Hustle Analysis Dashboard {{ $datas->id != 1 ? 'for ' . $datas->name : '' }}
+        <br> 2018-2023
+    </div>
+    <div
+        class="m-2 p-2 rounded-md bg-white flex flex-row justify-between drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue">
+        {{-- <h1>Search Side Hustle</h1>
+        <span class="material-symbols-outlined">
+            search
+        </span> --}}
+        <form action="/side-hustle/category" method="POST" class="w-full" id="form">
+            @csrf
+            <input type="hidden" name="side_hustle_id" id="side-hustle">
+            <select id="myDropdown" class="w-full bg-transparent border-transparent" onchange="submitForm();">
+                <option value="" class="option">-- Select Side Hustle --</option>
+                @foreach ($sidehustles as $sidehustle)
+                    <option value="{{ $sidehustle->id }}" class="option">{{ $sidehustle->name }}</option>
+                @endforeach
             </select>
-        </div>
-        <div class="grid grid-cols-4 gap-2 mx-2 text-center font-semibold">
-            <div id="buttonView" onclick="changeColor()"
-                class="rounded-xl p-2 bg-white drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue"> All
+        </form>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 mx-2 text-center font-semibold">
+        {{-- <div id="buttonView" onclick="changeColor()"
+            class="rounded-xl p-2 bg-white drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue"> All
+        </div> --}}
+        <div id="buttonView2" onclick="changeColor2()"
+            class="rounded-xl p-2 bg-white drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue hover:bg-[#002559] hover:text-[#F2AE29]">
+            Interest By Region</div>
+        <div id="buttonView3" onclick="changeColor3()"
+            class="rounded-xl p-2 bg-white drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue">
+            Interest Over Time</div>
+        <div id="buttonView4" onclick="changeColor4()"
+            class="rounded-xl p-2 bg-white drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue">
+            Cloudlist Related Query</div>
+    </div>
+
+    {{-- <div class="grid grid-cols-4 gap-2 mx-2 mt-2"> --}}
+    <div class="mx-2 my-2 flex ">
+        <div
+            class="w-[49%] mr-2 text-white drop-shadow-xl bg-cBlue rounded-md flex flex-col text-center justify-around py-2 px-2 h-[400px]">
+            <div class="font-light">
+                <h1>Description</h1>
+                <h2>We can analyze the interest of a particular topic across different regions. This information can
+                    be useful for understanding market demand, identifying target regions for specific side hustles,
+                    or tailoring marketing strategies to different geographic areas.</h2>
             </div>
-            <div id="buttonView2" onclick="changeColor2()"
-                class="rounded-xl p-2 bg-white drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue">
-                Interest By Region</div>
-            <div id="buttonView3" onclick="changeColor3()"
-                class="rounded-xl p-2 bg-white drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue">
-                Interest Over Time</div>
-            <div id="buttonView4" onclick="changeColor4()"
-                class="rounded-xl p-2 bg-white drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue">
-                Cloudlist Related Query</div>
-        </div>
-        <div class="grid grid-cols-4 gap-2 mx-2 mt-2">
-            <div
-                class=" text-white drop-shadow-xl bg-cBlue rounded-md flex flex-col text-center justify-around py-2 px-2 h-[400px]">
-                <div class="font-light">
-                    <h1>Description</h1>
-                    <h2>We can analyze the interest of a particular topic across different regions. This information can
-                        be useful for understanding market demand, identifying target regions for specific side hustles,
-                        or tailoring marketing strategies to different geographic areas.</h2>
+            @if ($datas->id != 1)
+                <div>
+                    <h1 class="font-light">Interest Min</h1>
+                    <h2 class="font-semibold">{{ $datas->min_interest . ', ' . date('d M Y', strtotime($datas->min_date)); }}</h2>
                 </div>
                 <div>
                     <h1 class="font-light">Interest Max</h1>
-                    <h2 class="font-semibold">92</h2>
+                    <h2 class="font-semibold">{{ $datas->max_interest . ', ' . date('d M Y', strtotime($datas->max_date)); }}</h2>
                 </div>
-                <div>
-                    <h1 class="font-light">Interest Min</h1>
-                    <h2 class="font-semibold">2</h2>
-                </div>
+            @endif
+        </div>
+        <div class="z-10 flex justify-center flex-col w-full mb-2 overflow-hidden bg-white rounded-md">
+            <div class="w-[100%] flex flex-col justify-center ">
+                {!! file_get_contents(public_path($datas->interest_over_time)) !!}
+                <div class="text-xs ml-10 mb-10" style="color: red">*data smoothing with 8 window size</div>
             </div>
-            <div class="col-span-2 w-full bg-white rounded-md">2</div>
-            <div class="w-full bg-white rounded-md">3</div>
+            @if ($datas->interest_by_region != null)
+                <div class="w-[100%] flex justify-center ">
+                    {!! file_get_contents(public_path($datas->interest_by_region)) !!}
+                </div>
+                <div class="w-[100%] flex justify-center ">
+                    <img src="{{ $datas->related_queries }}" alt="">
+                </div>
+            @endif
         </div>
     </div>
-
 </body>
 
 <script>
-    function changeColor() {
-        var element = document.getElementById("buttonView");
-        element.style.backgroundColor = "#002559";
-        element.style.color = "#F2AE29";
-    }
+    function submitForm() {
+        var selectBox = document.getElementById("myDropdown");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+        var input = document.getElementById ("side-hustle")
+        input.value = selectedValue;
+
+        var form = document.getElementById ("form");
+        form.submit();
+   }
+
+    // function changeColor() {
+    //     var element = document.getElementById("buttonView");
+    //     element.style.backgroundColor = "#002559";
+    //     element.style.color = "#F2AE29";
+    //     element.scrollIntoView();
+    // }
 
     function changeColor2() {
         var element = document.getElementById("buttonView2");
