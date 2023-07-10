@@ -69,7 +69,7 @@
     {{-- <div class="grid grid-cols-4 gap-2 mx-2 mt-2"> --}}
     <div class="mx-2 my-2 flex z-0">
         <div
-            class="z-10 w-[32.5%] mr-2 mt-[150px] text-white drop-shadow-xl bg-cBlue rounded-md flex flex-col text-center justify-around py-2 px-2 h-[75%] fixed">
+            class="z-10 w-[32.5%] mr-2 mt-[150px] text-white drop-shadow-xl bg-cBlue rounded-md flex flex-col text-center justify-around py-20 px-5 h-[75%] fixed">
             <div class="font-light">
                 <h1>Description</h1>
                 <h2>We can analyze the interest of a particular topic across different regions. This information can
