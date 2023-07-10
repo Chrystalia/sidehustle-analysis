@@ -24,16 +24,16 @@
     }
 </style>
 
-<div class="w-full bg-[#F4F4F4] fixed h-[162px] -mt-3   "></div>
+<div class="z-10 w-full bg-[#F4F4F4] fixed h-[162px] -mt-3"></div>
 
 <body class="bg-[#F4F4F4] h-screen">
-    <div class="bg-[#F4F4F4] z-10">
-        <div class="text-center font-bold text-2xl p-4 bg-cBlue m-2 text-white rounded-xl drop-shadow-xl fixed w-[99%]">
+    <div class="bg-[#F4F4F4]">
+        <div class="z-20 text-center font-bold text-2xl p-4 bg-cBlue m-2 text-white rounded-xl drop-shadow-xl fixed w-[99%]">
             Side Hustle Analysis Dashboard {{ $datas->id != 1 ? 'for ' . $datas->name : '' }}
             <br> 2018-2023
         </div>
         <div
-            class="m-2 p-2 rounded-md bg-white flex flex-row justify-between drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue fixed mt-[104px] w-[99%]">
+            class="z-20 m-2 p-2 rounded-md bg-white flex flex-row justify-between drop-shadow-xl hover:ring-2 hover:ring-cSoftBlue fixed mt-[104px] w-[99%]">
             {{-- <h1>Search Side Hustle</h1>
             <span class="material-symbols-outlined">
                 search
@@ -67,9 +67,9 @@
     </div>
 
     {{-- <div class="grid grid-cols-4 gap-2 mx-2 mt-2"> --}}
-    <div class="mx-2 my-2 flex -z-10">
+    <div class="mx-2 my-2 flex z-0">
         <div
-            class="z-10 w-[32.5%] mr-2 mt-[150px] text-white drop-shadow-xl bg-cBlue rounded-md flex flex-col text-center justify-around py-2 px-2 h-[436px] fixed">
+            class="z-10 w-[32.5%] mr-2 mt-[150px] text-white drop-shadow-xl bg-cBlue rounded-md flex flex-col text-center justify-around py-2 px-2 h-[75%] fixed">
             <div class="font-light">
                 <h1>Description</h1>
                 <h2>We can analyze the interest of a particular topic across different regions. This information can
@@ -89,7 +89,7 @@
                 </div>
             @endif
         </div>
-        <div class="mt-[150px] w-full h-full -z-10 mb-0">
+        <div class="mt-[150px] w-full h-full z-0 mb-0">
             <div
                 class="flex justify-center flex-col ml-[33.5%] mb-2 overflow-hidden bg-white rounded-md w-[66.5%] h-[60%] -z-10">
                 <div class="w-[100%] flex flex-col justify-center ">
