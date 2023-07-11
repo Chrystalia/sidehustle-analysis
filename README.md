@@ -12,7 +12,11 @@ Side hustle refers to a side activity or job that a person does in addition to t
 (coming soon)
 
 # Website Demonstration 📺
-(coming soon)
+[![sidehustle-analysis](https://img.youtube.com/vi/BpeTMQ76uNo/0.jpg)](https://www.youtube.com/watch?v=BpeTMQ76uNo)
+
+or
+
+<a href="youtu.be/BpeTMQ76uNo"> Click Here for Demo </a>
 
 # Features & Tech ⚙️
 - Python
