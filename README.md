@@ -110,9 +110,10 @@ Open a new terminal (make sure you're in the right directory):
 
 
 <p align='center'>
-  <b>Follow me here 🌿</b><br>  
-  <a href="https://instagram.com/chrystaliaaa">Instagram</a> |
-  <a href="https://www.youtube.com/channel/UCALninl2X0nokj5xZX2QYIw">YouTube</a> |
-  <a href="https://github.com/Chrystalia">Github</a><br><br>
+  <b>Follow us here 🌿</b><br>  
+  <a href="https://github.com/Chrystalia">Chrystalia</a> |
+  <a href="https://github.com/danielzergew">danielzergew</a> |
+  <a href="https://github.com/nadyaclrp">nadyaclrp</a><br><br>
+  Don't forget to leave a star if you find this repository helpful ⭐
 </p>
  
